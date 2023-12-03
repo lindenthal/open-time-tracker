@@ -1,4 +1,3 @@
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'description.dart';
@@ -8,7 +7,6 @@ part 'project.g.dart';
 
 @JsonSerializable()
 class Project {
-
   Project({
     this.id,
     this.name,
@@ -44,11 +42,14 @@ class Project {
 
   ProjectLinks? links;
 
-  factory Project.fromJson(Map<String, dynamic> json) =>
-      _$ProjectFromJson(json);
+  factory Project.fromJson(Map<String, dynamic> json) => _$ProjectFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ProjectToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
+  }
 }
 
-enum ProjectStatus {on_track, at_risk, off_track}
-
-
-
+enum ProjectStatus { on_track, at_risk, off_track }
