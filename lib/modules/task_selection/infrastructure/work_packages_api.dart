@@ -12,6 +12,9 @@ abstract class WorkPackagesApi {
     @Query('filters') String? filters,
     @Query('pageSize') int? pageSize,
   });
+
+  // @POST('/work_packages/form')
+
 }
 
 class WorkPackageResponse {
