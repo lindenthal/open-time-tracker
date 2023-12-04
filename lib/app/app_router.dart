@@ -4,6 +4,7 @@ import 'package:open_project_time_tracker/modules/authorization/ui/authorization
 import 'package:open_project_time_tracker/modules/authorization/ui/instance_configuration/instance_configuration_page.dart';
 import 'package:open_project_time_tracker/modules/calendar/ui/calendar_page.dart';
 import 'package:open_project_time_tracker/modules/task_selection/ui/analytics/analytics_page.dart';
+import 'package:open_project_time_tracker/modules/task_selection/ui/create_package/create_package_page.dart';
 import 'package:open_project_time_tracker/modules/task_selection/ui/notification_selection_list/notification_selection_list_page.dart';
 import 'package:open_project_time_tracker/modules/task_selection/ui/time_entries_list/time_entries_list_page.dart';
 import 'package:open_project_time_tracker/modules/task_selection/ui/work_packages_list/work_packages_list_page.dart';
@@ -27,6 +28,13 @@ class AppRouter {
   static void routeToWorkPackagesList() {
     final route = CupertinoPageRoute(
       builder: ((context) => const WorkPackagesListPage()),
+    );
+    navigatorKey.currentState?.push(route);
+  }
+
+  static void routeToCreatePackage() {
+    final route = CupertinoPageRoute(
+      builder: ((context) => const CreatePackagePage()),
     );
     navigatorKey.currentState?.push(route);
   }

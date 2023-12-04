@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart';
+import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
 
 part 'work_packages_api.g.dart';
@@ -13,7 +13,13 @@ abstract class WorkPackagesApi {
     @Query('pageSize') int? pageSize,
   });
 
-  // @POST('/work_packages/form')
+  @POST('projects/1/work_packages')
+  @Headers(<String, dynamic>{
+    "Content-Type": "application/json",
+  })
+  Future<void> createWorkPackage({
+    @Body() required Map<String, dynamic> body,
+  });
 
 }
 

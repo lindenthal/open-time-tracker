@@ -12,20 +12,22 @@ class ProjectType {
     this.position,
     this.createdAt,
     this.updatedAt,
-    this.isDefault = false,
-    this.isMilestone = false,
+    this.isDefault,
+    this.isMilestone,
+    this.href,
   });
 
   @JsonKey(name: '_type')
   String? type;
-  int id;
+  int? id;
   String? name;
   String? color;
   int? position;
   DateTime? createdAt;
   DateTime? updatedAt;
-  bool isDefault;
-  bool isMilestone;
+  bool? isDefault;
+  bool? isMilestone;
+  String? href;
 
   factory ProjectType.fromJson(Map<String, dynamic> json) => _$ProjectTypeFromJson(json);
 
@@ -35,4 +37,6 @@ class ProjectType {
   String toString() {
     return toJson().toString();
   }
+
+  static const hrefPrefix = "/api/v3/types/";
 }

@@ -8,14 +8,14 @@ class WeekDay {
   WeekDay({this.type,
     this.day,
     this.working,
-    this.title,
+    this.name,
   });
 
   @JsonKey(name: '_type')
   String? type;
   int? day;
   bool? working;
-  String? title;
+  String? name;
 
   factory WeekDay.fromJson(Map<String, dynamic> json) =>
       _$WeekDayFromJson(json);

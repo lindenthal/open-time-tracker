@@ -1,7 +1,10 @@
 import 'package:dio/dio.dart';
-import 'package:open_project_time_tracker/app/model/non_working_day.dart';
-import 'package:open_project_time_tracker/app/model/week_day.dart';
+
 import 'package:retrofit/retrofit.dart';
+
+import '../../../app/model/day.dart';
+import '../../../app/model/non_working_day.dart';
+import '../../../app/model/week_day.dart';
 
 part 'work_schedule_api.g.dart';
 
@@ -14,6 +17,9 @@ abstract class WorkScheduleApi {
 
   @GET('/days/non_working')
   Future<NonWorkingDaysResponse> nonWorkingDays();
+
+  @GET('/days')
+  Future<DaysListResponse> days();
 }
 
 class NonWorkingDaysResponse {
@@ -31,7 +37,7 @@ class NonWorkingDaysResponse {
 }
 
 class WeekDaysListResponse {
-  late List<WeekDay> weekDay;
+  late List<WeekDay> weekDays;
 
   WeekDaysListResponse.fromJson(Map<String, dynamic> json) {
     List<WeekDay> items = [];
@@ -40,6 +46,20 @@ class WeekDaysListResponse {
     for (var element in elements) {
       items.add(WeekDay.fromJson(element));
     }
-    weekDay = items;
+    weekDays = items;
+  }
+}
+
+class DaysListResponse {
+  late List<Day> upcomingDays;
+
+  DaysListResponse.fromJson(Map<String, dynamic> json) {
+    List<Day> items = [];
+    final embedded = json['_embedded'];
+    final elements = embedded['elements'] as List<dynamic>;
+    for (var element in elements) {
+      items.add(Day.fromJson(element));
+    }
+    upcomingDays = items;
   }
 }

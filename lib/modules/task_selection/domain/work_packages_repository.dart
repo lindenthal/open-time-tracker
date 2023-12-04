@@ -1,7 +1,13 @@
+import '../../../app/model/work_package_form.dart';
+
 abstract class WorkPackagesRepository {
   Future<List<WorkPackage>> list({
     int? userId,
     int? pageSize,
+  });
+
+  Future<void> createWorkPackage({
+    required WorkPackageForm workPackage
   });
 }
 

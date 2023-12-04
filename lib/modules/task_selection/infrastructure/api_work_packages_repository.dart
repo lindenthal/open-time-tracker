@@ -1,6 +1,8 @@
 import 'package:open_project_time_tracker/modules/task_selection/domain/work_packages_repository.dart';
 import 'package:open_project_time_tracker/modules/task_selection/infrastructure/work_packages_api.dart';
 
+import '../../../app/model/work_package_form.dart';
+
 class ApiWorkPackagesRepository implements WorkPackagesRepository {
   WorkPackagesApi restApi;
 
@@ -33,5 +35,10 @@ class ApiWorkPackagesRepository implements WorkPackagesRepository {
               status: e.status),
         )
         .toList();
+  }
+
+  @override
+  Future<void> createWorkPackage({required WorkPackageForm workPackage}) async {
+    await restApi.createWorkPackage(body: workPackage.toJson());
   }
 }

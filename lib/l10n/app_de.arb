@@ -64,5 +64,7 @@
 
     "notification_selection_list__title": "Aufgabenauswahl",
     "notification_selection_list__time_entries_header": "Heutige Arbeit",
-    "notification_selection_list__work_packages_header": "Aktive Aufgaben"
+    "notification_selection_list__work_packages_header": "Aktive Aufgaben",
+
+    "create_work_package_title": "Create new WorkPackage"
 }

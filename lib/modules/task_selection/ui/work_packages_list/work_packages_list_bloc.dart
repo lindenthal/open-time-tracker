@@ -67,11 +67,6 @@ class WorkPackagesListBloc extends EffectCubit<WorkPackagesListState, WorkPackag
         emit(const WorkPackagesListState.loading());
       }
 
-      // final projects = await _projectsRepository.list();
-      // final weekDays = await _workScheduleRepository.weekDays();
-      final nonWorkingDays = await _workScheduleRepository.nonWorkingDays();
-      final projectsTypes = await _projectsRepository.typesList("1");
-
       final items = await _workPackagesRepository.list(
         userId: _userDataRepository.userID,
         pageSize: 100,

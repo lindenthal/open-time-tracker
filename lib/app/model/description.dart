@@ -1,4 +1,3 @@
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'description.g.dart';
@@ -7,9 +6,9 @@ part 'description.g.dart';
 class Description {
 
   Description({
-    this.format,
-    this.raw,
-    this.html,
+    this.format = DescriptionFormat.markdown,
+    this.raw = "",
+    this.html = ""
   });
 
   DescriptionFormat? format;
@@ -18,6 +17,8 @@ class Description {
 
   factory Description.fromJson(Map<String, dynamic> json) =>
       _$DescriptionFromJson(json);
+
+  Map<String, dynamic> toJson() => _$DescriptionToJson(this);
 }
 
-enum DescriptionFormat {plain, markdown, custom}
+enum DescriptionFormat { plain, markdown, custom }

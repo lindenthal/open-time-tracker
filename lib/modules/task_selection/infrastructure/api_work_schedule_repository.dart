@@ -1,3 +1,4 @@
+import 'package:open_project_time_tracker/app/model/day.dart';
 import 'package:open_project_time_tracker/app/model/non_working_day.dart';
 import 'package:open_project_time_tracker/app/model/week_day.dart';
 import 'package:open_project_time_tracker/modules/task_selection/domain/work_schedule_repository.dart';
@@ -18,6 +19,12 @@ class ApiWorkScheduleRepository implements WorkScheduleRepository {
   @override
   Future<List<WeekDay>> weekDays() async {
     final response = await restApi.weekDays();
-    return response.weekDay.map((e) => e).toList();
+    return response.weekDays.map((e) => e).toList();
+  }
+
+  @override
+  Future<List<Day>> upcomingDays() async {
+    final response = await restApi.days();
+    return response.upcomingDays.map((e) => e).toList();
   }
 }
